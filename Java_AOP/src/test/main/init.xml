@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.0.xsd">
+
+	<bean class="test.service.MemberServiceImpl"/>
+	<bean class="test.service.CafeServiceImpl"/>
+	<!-- Aspect를 bean으로 만들고 id 부여 -->
+	<bean id="one" class="test.aspect.PrintLogAspect"/>
+	
+	
+	<!-- aop 설정 
+		expression의 excution 괄호 안에서 메소드를 어디에 적용할 지 설정한다 | aspectj expression
+		aop:pointcut은 AOP를 적용할 바로 그 위치를 적용!
+		aop:aspect는 ref에 있는 method를 pointcut-ref에 적용한다는 의미.-->
+	<aop:config>
+		<aop:pointcut expression="execution(public void insert())"
+			id="myPoint"/>
+		<!-- one 이라는 아이디를 가지고 있는 객체의
+		printLog라는 이름의 메소드를 myPoint의 주변(around)에 적용해라 -->
+		<aop:aspect ref="one">
+			<aop:around method="printLog" pointcut-ref="myPoint"/>
+			<!-- 특정 메소드 이전과 이후에 모두 작업 하고 싶으면 around 
+				전에 작업하고 싶으면 before, 후는 after -->
+		</aop:aspect>
+	</aop:config>
+</beans>

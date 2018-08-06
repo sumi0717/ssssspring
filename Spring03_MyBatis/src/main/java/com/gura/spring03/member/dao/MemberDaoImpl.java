@@ -12,37 +12,38 @@ import com.gura.spring03.member.dto.MemberDto;
 @Repository
 public class MemberDaoImpl implements MemberDao{
 	@Autowired 
-	private SqlSession session; //의존 객체 (이게 있어야 작업 가능)	
-	//@Autowired는 의존객체 자동 주입 (Dependency Injection)
-	//(스프링 컨테이너에 이런 타입 객체가 존재하면 자동으로 주입되게)
-	//servlet-context.xml에 SqlSession 객체 설정해둔거 불러온 것임
-	//이 어노테이션 붙여주면 setter 메소드를 자동으로 만들어서 데이터 넣어줌
-	//따라서 null이 아니게 되므로 다른 메소드 구현 안하고 그냥 사용하면 됨
-	//try, catch, session.close()할 필요 없음. 자동으로 관리해주므로
+	private SqlSession session; //의존 객체 (이게 있어야 작업 가능)	\
+	
+//	@Autowired는 의존객체 자동 주입 (Dependency Injection)
+//	(스프링 컨테이너에 이런 타입 객체가 존재하면 자동으로 주입되게)
+//	servlet-context.xml에 SqlSession 객체 설정해둔거 불러온 것임
+//	이 어노테이션 붙여주면 setter 메소드를 자동으로 만들어서 데이터 넣어줌
+//	따라서 null이 아니게 되므로 다른 메소드 구현 안하고 그냥 사용하면 됨
+//	try, catch, session.close()할 필요 없음. 자동으로 관리해주므로
 	
 	
 	@Override
 	public void insert(MemberDto dto) {
-		
+		session.insert("member.insert", dto);
 		
 	}
 
 	@Override
 	public void update(MemberDto dto) {
-		// TODO Auto-generated method stub
+		session.update("member.update", dto);
 		
 	}
 
 	@Override
 	public void delete(int num) {
-		// TODO Auto-generated method stub
+		session.delete("member.delete", num);
 		
 	}
 
 	@Override
 	public MemberDto getData(int num) {
-		// TODO Auto-generated method stub
-		return null;
+		MemberDto dto=session.selectOne("member.getData", num);
+		return dto;
 	}
 
 	@Override
