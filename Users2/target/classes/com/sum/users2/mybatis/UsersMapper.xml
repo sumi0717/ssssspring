@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="users">
+	<select id="getList" resultType="com.sum.users2.users.dto.UsersDto">
+		SELECT num, id, pwd
+		FROM users
+		ORDER BY num DESC
+	</select>
+	
+	<insert id="insert" parameterType="com.sum.users2.users.dto.UsersDto">
+		INSERT INTO users(num, id, pwd)
+		VALUES (users_seq.NEXTVAL, #{id}, #{pwd})
+		
+	</insert>
+	<update id="update" parameterType="com.sum.users2.users.dto.UsersDto">
+		UPDATE users
+		SET id=#{id}, pwd=#{pwd}
+		WHERE num=#{num}	
+	</update>
+	
+	<select id="isValid" parameterType="com.sum.users2.users.dto.UsersDto"
+		resultType="string">
+		SELECT id
+		FROM users
+		WHERE id=#{id} AND pwd=#{pwd}
+	</select>
+	
+	<select id="getData" parameterType="int"
+	 resultType="com.sum.users2.users.dto.UsersDto">
+	 	SELECT num,id,pwd
+	 	FROM users
+	 	WHERE num=#{num}
+	 </select>
+	 
+	 <delete id="delete" parameterType="int">
+	 	DELETE FROM users
+	 	WHERE num=#{num}
+	 </delete>
+</mapper>
