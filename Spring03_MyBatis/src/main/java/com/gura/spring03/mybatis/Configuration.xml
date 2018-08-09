@@ -5,10 +5,12 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 <configuration>
 	<typeAliases>
 		<typeAlias type="com.gura.spring03.member.dto.MemberDto"
-			alias="memberDto"/>
+			alias="memberDto" />
+		<typeAlias type="com.gura.spring03.users.dto.UsersDto"
+			alias="usersDto" />
 	</typeAliases>
 	<mappers>
-		<mapper 
-			resource="com/gura/spring03/mybatis/MemberMapper.xml"/>
+		<mapper resource="com/gura/spring03/mybatis/MemberMapper.xml" />
+		<mapper resource="com/gura/spring03/mybatis/UsersMapper.xml" />
 	</mappers>
 </configuration>
