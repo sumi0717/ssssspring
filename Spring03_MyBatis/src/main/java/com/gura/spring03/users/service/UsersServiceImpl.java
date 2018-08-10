@@ -122,4 +122,17 @@ public class UsersServiceImpl implements UsersService{
 		dao.updatePwd(dto);
 	}
 
+	@Override
+	public void delete(ModelAndView mView, HttpSession session) {
+		//세션에 저장된 아이디를 읽어온다
+		String id=(String)session.getAttribute("id");
+		//DB에서 해당 정보를 삭제한다
+		dao.delete(id);
+		//로그아웃 처리를 한다
+		session.invalidate();
+		//ModelAndView 객체에 메세지를 담는다
+		mView.addObject("msg",id+" 님 회원 탈퇴 되었습니다");
+		
+	}
+
 }

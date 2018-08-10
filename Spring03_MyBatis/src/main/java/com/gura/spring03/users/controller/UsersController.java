@@ -167,12 +167,12 @@ public class UsersController {
 	   return new ModelAndView("redirect:/users/info.do");
    }
    
-   @RequestMapping("/users/pwd_changeform")
+   @RequestMapping("/users/pw_changeform")
    public ModelAndView authUpdateForm(HttpServletRequest request) {
-	   return new ModelAndView("users/pwd_changeform");
+	   return new ModelAndView("users/pw_changeform");
    }
    
-   @RequestMapping("users/pwd_check")
+   @RequestMapping("users/pw_check")
    @ResponseBody
    public Map<String,Object> pwCheck(@RequestParam String inputPwd,
 		   HttpSession session){
@@ -191,5 +191,15 @@ public class UsersController {
 	   service.updatePwd(pwd, session);
 	   //개인정보 보기로 리다이렉트
 	   return new ModelAndView("redirect:/users/info.do");
+   }
+   
+   //회원 탈퇴 요청 처리
+   @RequestMapping("/users/delete")
+   public ModelAndView authDelete(HttpServletRequest request, ModelAndView mView) {
+	   //서비스를 통해서 회원 탈퇴 처리를 하고
+	   service.delete(mView, request.getSession()); //세션은 이렇게 리퀘스트 통해서 받아써도 되고, httpSesseion을 인자로 바로 받아써도 됨.
+	   //view 페이지로 이동해서 응답하기
+	   mView.setViewName("users/delete");
+	   return mView;
    }
 }

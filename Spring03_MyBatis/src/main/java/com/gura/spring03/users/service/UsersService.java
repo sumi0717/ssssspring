@@ -15,4 +15,5 @@ public interface UsersService {
 	public void update(UsersDto dto);
 	public boolean isValidPwd(String inputPwd, HttpSession session);
 	public void updatePwd(String pwd, HttpSession session);
+	public void delete(ModelAndView mView, HttpSession session);
 }

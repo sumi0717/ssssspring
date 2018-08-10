@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>users/pw_updateform.jsp</title>
+<title>users/pwd_updateform.jsp</title>
 </head>
 <body>
 <h3>비밀번호 변경</h3>
@@ -37,7 +37,7 @@
 		var inputPwd=$(this).val();
 		//ajax 요청을 통해서 현재 비밀번호가 맞는지 확인한다.
 		$.ajax({
-			url:"pwd_check.do",
+			url:"pw_check.do",
 			method:"post",
 			data:{inputPwd:inputPwd},
 			success:function(responseData){
