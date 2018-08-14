@@ -57,9 +57,13 @@
 	<context:component-scan
 		base-package="com.gura.spring03.file.*" />
 	<context:component-scan
+		base-package="com.gura.spring03.cafe.*" />
+	<context:component-scan
 		base-package="com.gura.spring03.aspcet" />
 	<context:component-scan
-		base-package="com.gura.spring03.exception" />	
+		base-package="com.gura.spring03.exception" />
+		<context:component-scan
+		base-package="com.gura.spring03.shop.*" />
 
 	<!-- 어노테이션 기반으로 aop를 적용하기 위한 설정 -->
 	<aop:aspectj-autoproxy />
@@ -71,15 +75,16 @@
 		<beans:property name="maxUploadSize" value="10240000" />
 	</beans:bean>
 
-	<!-- 
-	[ Abstract view 가 동작하도록 설정 ]
-	bean의 이름으로 view페이지를 찾아갈 수 있도록 설정
-	-->
+	<!-- [ Abstract view 가 동작하도록 설정 ] bean의 이름으로 view페이지를 찾아갈 수 있도록 설정 -->
 	<beans:bean
 		class="org.springframework.web.servlet.view.BeanNameViewResolver">
 		<beans:property name="order" value="0" />
 	</beans:bean>
-	
-	<!-- error 페이지 controller -->
-	<view-controller path="/error/404.do" view-name="error/404"/>
+
+	<!-- [ error 페이지 controller ] /error/404.do 요청이 되면 /WEB-INF/views/error/404.jsp 
+		페이지로 forward 이동해서 에러 정보 응답하기 -->
+	<view-controller path="/error/404.do"
+		view-name="error/404" />
+	<view-controller path="/error/500.do"
+		view-name="error/500" />
 </beans:beans>

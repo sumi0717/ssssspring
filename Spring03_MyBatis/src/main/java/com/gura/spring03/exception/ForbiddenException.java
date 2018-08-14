@@ -4,6 +4,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
 /*
+ * 	(금지된 요청)
  *  403 FORBIDDEN 응답을 프로그래머가 하고 싶을 때
  *  
  *  throw new ForbiddenException() 하면 된다

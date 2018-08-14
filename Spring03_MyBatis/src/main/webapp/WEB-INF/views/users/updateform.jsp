@@ -24,6 +24,6 @@
 		value="${dto.email }"/><br/>
 	<button type="submit">수정 확인</button>
 </form>
-<a href="pwd_changeform.do">비밀번호 변경</a>
+<a href="pw_changeform.do">비밀번호 변경</a>
 </body>
 </html>

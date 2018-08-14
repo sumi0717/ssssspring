@@ -38,4 +38,5 @@ public class ExceptionController {
 		mView.setViewName("error/data_access");
 		return mView;
 	}
+	
 }

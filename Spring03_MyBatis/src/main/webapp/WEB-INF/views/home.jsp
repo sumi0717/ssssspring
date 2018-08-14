@@ -19,6 +19,8 @@
 	<li><a href="users/signup_form.do">회원 가입 하기</a></li>
 	<li><a href="users/loginform.do">로그인 하기</a></li>
 	<li><a href="file/list.do">자료실 목록 보기</a></li>
+	<li><a href="cafe/list.do">게시글 목록 보기</a></li>
+	<li><a href="shop/list.do">상품 목록 보기</a></li>
 </ul>
 </body>
 </html>
