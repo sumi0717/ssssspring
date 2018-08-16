@@ -175,7 +175,7 @@ public class CafeServiceImpl implements CafeService {
 		request.setAttribute("commentList", commentList);
 	}
 	
-	//글 수정 /오류.
+	//글 수정
 	@Override
 	public void update(HttpServletRequest request) {
 		
@@ -228,5 +228,5 @@ public class CafeServiceImpl implements CafeService {
 				
 		
 	}
-
+	
 }

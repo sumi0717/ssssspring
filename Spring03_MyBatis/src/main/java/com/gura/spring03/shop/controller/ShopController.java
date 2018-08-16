@@ -28,7 +28,7 @@ public class ShopController {
 	@RequestMapping("/shop/buy")
 	public ModelAndView authBuy(HttpServletRequest request,
 			ModelAndView mView) {
-		
+		shopService.buy(request, mView);
 		mView.setViewName("shop/buy");
 		return mView;
 	}

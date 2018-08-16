@@ -6,6 +6,14 @@ CREATE TABLE shop(
 	remainCount NUMBER CHECK(remainCount >= 0) --재고갯수 
 );
 
+CREATE TABLE reservation(
+	kaoId VARCHAR2(100) PRIMARY KEY,
+	phone VARCHAR2(100),
+	dogSize VARCAHR(100),
+	timeSlot VARCHAR2(100),
+	cctv boolean	
+);
+
 -- 고객 계좌 테이블, 업데이트 (수정이 일어난다
 CREATE TABLE client_account(
 	id VARCHAR2(30) PRIMARY KEY, -- 고객의 아이디
@@ -40,3 +48,8 @@ VALUES('superman', 10000, 0);
 
 INSERT INTO client_account (id, money, point)
 VALUES('batman', 10000, 0);
+
+
+SELECT * FROM CLIENT_ACCOUNT;
+
+

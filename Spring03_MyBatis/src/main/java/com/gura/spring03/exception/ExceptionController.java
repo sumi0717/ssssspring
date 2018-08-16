@@ -23,6 +23,14 @@ public class ExceptionController {
 		mView.setViewName("error/403");
 		return mView;
 	}
+	// NodeliveryException이 발생하면 호출되는 메소드
+	@ExceptionHandler(NodeliveryException.class)
+	public ModelAndView errorNodelivery(NodeliveryException ne) {
+		ModelAndView mView=new ModelAndView();
+		mView.addObject("msg", ne.getMessage());
+		mView.setViewName("error/data_access");
+		return mView;
+	}
 	
 	/*
 	 *  @Repository 어노테이션이 붙어있는 Dao에서, 
