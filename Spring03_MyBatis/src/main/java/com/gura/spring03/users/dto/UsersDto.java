@@ -5,16 +5,16 @@ public class UsersDto {
 	private String pwd;
 	private String email;
 	private String regdate;
-	//디폴트 생성자, 호출할 때 이 생성자를 호출하는 것. 그러므로 생성자 없으면 안댐
-	//이 상자에 포장해서 setter메소드 넣는다고 보면됨
+	private String profileImage;
+	//디폴트 생성자
 	public UsersDto() {}
-	
-	public UsersDto(String id, String pwd, String email, String regdate) {
+	public UsersDto(String id, String pwd, String email, String regdate, String profileImage) {
 		super();
 		this.id = id;
 		this.pwd = pwd;
 		this.email = email;
 		this.regdate = regdate;
+		this.profileImage = profileImage;
 	}
 	public String getId() {
 		return id;
@@ -39,6 +39,12 @@ public class UsersDto {
 	}
 	public void setRegdate(String regdate) {
 		this.regdate = regdate;
+	}
+	public String getProfileImage() {
+		return profileImage;
+	}
+	public void setProfileImage(String profileImage) {
+		this.profileImage = profileImage;
 	}
 	
 }

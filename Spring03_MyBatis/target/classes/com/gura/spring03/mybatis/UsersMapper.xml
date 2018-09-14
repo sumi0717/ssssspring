@@ -6,22 +6,23 @@
 		(id, pwd, email, regdate)
 		VALUES(#{id}, #{pwd}, #{email}, SYSDATE)
 	</insert>
-	<select id="getData" parameterType="string" resultType="usersdto">
-		SELECT id,pwd,email,regdate
+	<select id="getData" parameterType="string"
+		resultType="usersDto">
+		SELECT id, pwd, email, regdate, profileImage
 		FROM users
 		WHERE id=#{id}
 	</select>
 	<update id="update" parameterType="usersDto">
 		UPDATE users
-		SET pwd=#{pwd}, email=#{email}
+		SET email=#{email}
 		WHERE id=#{id}
 	</update>
 	<delete id="delete" parameterType="string">
-		DELETE 
-		FROM users
+		DELETE FROM users
 		WHERE id=#{id}
 	</delete>
-	<select id="isExist" parameterType="string" resultType="string">
+	<select id="isExist" parameterType="string" 
+		resultType="string">
 		SELECT id
 		FROM users
 		WHERE id=#{id}
@@ -30,6 +31,12 @@
 	<update id="updatePwd" parameterType="usersDto">
 		UPDATE users
 		SET pwd=#{pwd}
+		WHERE id=#{id}
+	</update>
+	
+	<update id="updateProfile" parameterType="usersDto">
+		UPDATE users
+		SET profileImage=#{profileImage}
 		WHERE id=#{id}
 	</update>
 </mapper>

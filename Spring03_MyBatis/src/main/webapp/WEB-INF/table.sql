@@ -52,4 +52,6 @@ VALUES('batman', 10000, 0);
 
 SELECT * FROM CLIENT_ACCOUNT;
 
+----- Users 테이블에 profile 이미지를 저장할 칼럽 추가
+ALTER TABLE users ADD(profileImage VARCHAR2(100));
 
